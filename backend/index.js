@@ -1,6 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const resourceRoutes = require('./routes/resources');
 const app = express();
 const port = 3000;
+
+const uri = 'mongodb+srv://amulyamurahari:Amulya1997@cluster.ynbj1kk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster';
+mongoose.connect(uri)
+     .then(() => console.log('MongoDB connected'))
+     .catch(err => console.log('MongoDB connection error:', err));
 
 app.get('/', (req,res) => {
     res.send('Hello, Amulya!');
@@ -17,9 +24,11 @@ app.listen(port, () => {
 app.use(express.json()); //middleware - automatically parses JSON formatted request bodies and makes the parsed data available on req.body.
 
 let resources = [
-    {id: 1, name: 'Resouce 1' },
-    {id: 2, name: 'Resouce 2' },
+    {id: 1, name: 'Resource 1' },
+    {id: 2, name: 'Resource 2' },
 ];
+
+app.use('/api/resource', resourceRoutes);
 
 //POST 
 app.post('/api/resource', (req,res) => {
