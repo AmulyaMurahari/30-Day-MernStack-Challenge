@@ -66,5 +66,26 @@
 * Build an Express route that deletes a resource using a DELETE request.
 * Test your API endpoints using Postman or Insomnia and verify the expected responses.
 
+# Day 4
+
+### Goals:
+
+* Set up a MongoDB database and connect it to your Express application.
+* Learn MongoDB CRUD operations (Create, Read, Update, Delete).
+* Use Mongoose to interact with the MongoDB database.
+
+### Resources/Tips:
+
+* MongoDB Atlas (Cloud Database): MongoDB Atlas
+* Mongoose Documentation: Mongoose
+
+### Daily Checklist
+
+* Create a MongoDB database and connect it to your Express application.
+* Define a Mongoose schema for a resource in your application.
+* Write Mongoose queries to create, read, update, and delete resources.
+* Implement an Express route that uses Mongoose to interact with the database.
+* Test your database operations by sending API requests and verifying the data in the MongoDB collection.
+
 
 
