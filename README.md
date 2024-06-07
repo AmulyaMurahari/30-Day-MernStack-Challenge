@@ -108,6 +108,26 @@
 * Handle error cases in a React component when the API request fails.
 * Build a form in React that submits data to an API endpoint and handles the response.
 
+# Day 6 
+
+### Goals:
+
+* Learn about React Router for client-side routing.
+* Set up routes in a React application using React Router.
+* Implement navigation between different pages in React.
+
+### Resources/Tips:
+
+React Router: React Router
+
+### Daily Checklist
+
+* Set up React Router in your application to define routes for different pages.
+* Create a navigation menu with links to different pages using React Router.
+* Build multiple React components, each associated with a different route.
+* Implement a nested route structure in your React application.
+* Add a 404 page for handling invalid routes in your React Router configuration.
+
 
 
 
