@@ -9,6 +9,7 @@ import './App.css';
 import ResourceList from './ResourceList';
 import ResourceForm from './ResourceForm';
 import User from './User';
+import ResourceFormWithFormik from './ResourceFormWithFormik';
 
 const Home = () => <h1>Home Page</h1>;
 const About = () => <h1>About Page</h1>;
@@ -38,7 +39,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/resources" element={<ResourceList />} />
-                    <Route path="/create-resource" element={<ResourceForm />} />
+                    <Route path="/create-resource" element={<ResourceFormWithFormik />} />
                     <Route path="/user" element={<User />}>
                         <Route path="profile" element={<Profile />} />
                         <Route path="settings" element={<Settings />} />
