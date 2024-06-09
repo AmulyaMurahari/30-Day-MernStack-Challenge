@@ -128,6 +128,28 @@ React Router: React Router
 * Implement a nested route structure in your React application.
 * Add a 404 page for handling invalid routes in your React Router configuration.
 
+# Day 7 
+
+### Goals:
+
+* Implement form handling and validation in React.
+* Use form libraries (e.g., Formik, React Hook Form) for easier form management.
+* Validate form inputs and display error messages.
+
+### Resources/Tips:
+
+* Formik
+* React Hook Form
+
+### Daily Checklist
+
+* Build a form in React using Formik or React Hook Form.
+* Validate form inputs for required fields, email format, or custom validation rules.
+* Display error messages for invalid form inputs.
+* Handle form submission and send data to the backend API.
+* Reset the form after successful submission or cancellation.
+
+
 
 
 
