@@ -7,7 +7,7 @@ import './App.css';
 // import ReusableButton from './ReusableButton';
 // import Counter from './Counter';
 import ResourceList from './ResourceList';
-import ResourceForm from './ResourceForm';
+// import ResourceForm from './ResourceForm';
 import User from './User';
 import ResourceFormWithFormik from './ResourceFormWithFormik';
 
@@ -18,9 +18,9 @@ const Profile = () => <h1>Profile Page</h1>;
 const Settings = () => <h1>Settings Page</h1>;
 
 function App() {
-    const handleClick = () => {
-        alert('Button clicked!');
-    };
+    // const handleClick = () => {
+    //     alert('Button clicked!');
+    // };
 
     return (
         <Router>

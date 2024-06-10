@@ -2,6 +2,28 @@ const express = require('express');
 const router = express.Router();
 const Resource = require('../models/Resource.js');
 
+
+//get paginated resource
+router.get('/', async(req,res) => {
+    const { page = 1, limit = 10, sortBy = 'name', order = 'asc'} = req.query;
+
+    try{
+
+        const options = {
+            page: parseInt(page, 10),
+            limit: parseInt(limit, 10),
+            sort: { [sortBy]: order === 'asc' ? 1 : -1},
+            
+        };
+
+        const resources = await Resource.paginate( {}, options);
+        res.json(resources);
+
+    } catch(err) {
+        res.status(500).json({ message: err.message});
+    }
+})
+
 //Create a new resource
 router.post('/', async(req,res) => {
     try{
