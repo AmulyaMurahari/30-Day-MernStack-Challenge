@@ -128,6 +128,49 @@ React Router: React Router
 * Implement a nested route structure in your React application.
 * Add a 404 page for handling invalid routes in your React Router configuration.
 
+# Day 7 
+
+### Goals:
+
+* Implement form handling and validation in React.
+* Use form libraries (e.g., Formik, React Hook Form) for easier form management.
+* Validate form inputs and display error messages.
+
+### Resources/Tips:
+
+* Formik
+* React Hook Form
+
+### Daily Checklist
+
+* Build a form in React using Formik or React Hook Form.
+* Validate form inputs for required fields, email format, or custom validation rules.
+* Display error messages for invalid form inputs.
+* Handle form submission and send data to the backend API.
+* Reset the form after successful submission or cancellation.
+
+# Day 8 
+
+### Goals:
+
+* Implement pagination and sorting in React.
+* Retrieve paginated data from the backend API.
+* Allow users to sort data based on different criteria.
+  
+### Resources/Tips:
+
+* React Paginate
+* Backend API Pagination Example
+  
+### Daily Checklist
+
+* Fetch paginated data from the backend API and display it in a React component.
+* Implement pagination controls in your React application to navigate between pages.
+* Add sorting functionality to the React component to allow users to sort data based on different criteria.
+* Update the API endpoints to handle pagination and sorting parameters.
+* Test the pagination and sorting functionality by fetching data from the backend and verifying the results.
+
+
 
 
 
