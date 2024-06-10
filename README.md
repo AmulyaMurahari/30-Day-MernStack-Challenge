@@ -149,6 +149,27 @@ React Router: React Router
 * Handle form submission and send data to the backend API.
 * Reset the form after successful submission or cancellation.
 
+# Day 8 Challenge
+
+### Goals:
+
+* Implement pagination and sorting in React.
+* Retrieve paginated data from the backend API.
+* Allow users to sort data based on different criteria.
+  
+### Resources/Tips:
+
+* React Paginate
+* Backend API Pagination Example
+  
+### Daily Checklist
+
+* Fetch paginated data from the backend API and display it in a React component.
+* Implement pagination controls in your React application to navigate between pages.
+* Add sorting functionality to the React component to allow users to sort data based on different criteria.
+* Update the API endpoints to handle pagination and sorting parameters.
+* Test the pagination and sorting functionality by fetching data from the backend and verifying the results.
+
 
 
 
