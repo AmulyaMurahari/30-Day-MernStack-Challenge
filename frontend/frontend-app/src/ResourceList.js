@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
+import '../src/App.css';
 
 
 const ResourceList = () => {
@@ -10,6 +11,7 @@ const ResourceList = () => {
     const[error, setError] = useState(null);
     const[currentPage, setCurrentPage] = useState(0);
     const[pageCount, setPageCount] = useState(0);
+    const[sortConfig, setSortConfig] = useState({key: 'name', direction:'asc'});
 
     //data fetching
     //This hook runs the fetchData function when the component mounts.
@@ -22,6 +24,8 @@ const ResourceList = () => {
                     params: {
                         page: currentPage + 1,
                         limit: 10,
+                        sortBy: sortConfig.key,
+                        order: sortConfig.direction,
                     },
                 });
                 setResources(response.data.docs);
@@ -36,10 +40,18 @@ const ResourceList = () => {
         };
 
         fetchData();
-    }, [currentPage]);
+    }, [currentPage, sortConfig]);
 
     const handlePageClick = (data) => {
         setCurrentPage(data.selected);
+    };
+
+    const handleSort = (key) => {
+        let direction = 'asc';
+        if (sortConfig.key === key && sortConfig.direction === 'asc') {
+            direction = 'desc';
+        }
+        setSortConfig({ key, direction});
     };
 
     if(loading)
@@ -56,15 +68,25 @@ const ResourceList = () => {
   return (
     <div>
         <h1>Resources List</h1>
-        <ul>
+        <table className="center-table">
+            <thead>
+                <tr>
+                    <th onClick={() => handleSort('name')}>Name</th>
+                    <th onClick={() => handleSort('description')}>Description</th>
+                    <th onClick={() => handleSort('email')}>Email</th>
+                </tr>
+            </thead>
+            <tbody>
             {resources.map((resource) => (
-                <li
-                    key={resource._id}>{resource.name}
-                <li>{resource.description}</li>
-                <li>{resource.email}</li>
-                </li>
-            ))}
-        </ul>
+                        <tr key={resource._id}>
+                            <td>{resource.name}</td>
+                            <td>{resource.description}</td>
+                            <td>{resource.email}</td>
+                        </tr>
+                    ))}
+            </tbody>
+        </table>
+    
         <ReactPaginate
             previousLabel={'previous'}
             nextLabel={'next'}
