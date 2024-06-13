@@ -170,6 +170,26 @@ React Router: React Router
 * Update the API endpoints to handle pagination and sorting parameters.
 * Test the pagination and sorting functionality by fetching data from the backend and verifying the results.
 
+# Day 9 
+
+### Goals:
+
+* Implement user authentication and registration in the MERN stack.
+* Set up user authentication using JWT (JSON Web Tokens).
+* Enable user registration and login functionality.
+  
+### Resources/Tips:
+
+* JWT (JSON Web Tokens)
+  
+### Daily Checklist
+
+* Implement user registration functionality by creating an API endpoint that stores user information in the database.
+* Set up user login functionality by verifying credentials and generating a JWT token.
+* Protect specific routes in your backend API by checking the validity of the JWT token.
+* Update the React frontend to handle user registration and login forms.
+* Test the user authentication and registration flows, ensuring successful login and access to protected routes.
+
 
 
 
