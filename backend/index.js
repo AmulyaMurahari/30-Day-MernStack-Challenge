@@ -1,13 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const resourceRoutes = require('./routes/resources');
+const authRoutes = require('./routes/auth');
+const { protect } = require('./middleware/authMiddleware');
+require('dotenv').config();
+
 const app = express();
 const port = 3000;
+
+app.use(cors());
+app.use(express.json());
 
 const uri = 'mongodb+srv://amulyamurahari:Amulya1997@cluster.ynbj1kk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster';
 mongoose.connect(uri)
      .then(() => console.log('MongoDB connected'))
      .catch(err => console.log('MongoDB connection error:', err));
+
+app.use('/api/resources', protect, resourceRoutes);
+app.use('/api/auth', authRoutes);
 
 app.get('/', (req,res) => {
     res.send('Hello, Amulya!');

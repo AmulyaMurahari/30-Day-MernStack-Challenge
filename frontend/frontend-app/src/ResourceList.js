@@ -46,12 +46,14 @@ const ResourceList = () => {
         setCurrentPage(data.selected);
     };
 
+
     const handleSort = (key) => {
         let direction = 'asc';
         if (sortConfig.key === key && sortConfig.direction === 'asc') {
             direction = 'desc';
         }
-        setSortConfig({ key, direction});
+        setSortConfig({key, direction});
+
     };
 
     if(loading)

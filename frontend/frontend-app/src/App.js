@@ -7,6 +7,8 @@ import './App.css';
 // import ReusableButton from './ReusableButton';
 // import Counter from './Counter';
 import ResourceList from './ResourceList';
+import Register from './Register';
+import Login from './Login';
 // import ResourceForm from './ResourceForm';
 import User from './User';
 import ResourceFormWithFormik from './ResourceFormWithFormik';
@@ -32,6 +34,8 @@ function App() {
                         <li><Link to="/resources">Resources</Link></li>
                         <li><Link to="/create-resource">Create Resource</Link></li>
                         <li><Link to="/user">User</Link></li>
+                        <li><Link to="/register">Register</Link></li>
+                        <li><Link to="/login">Login</Link></li>
                     </ul>
                 </nav>
 
@@ -44,6 +48,8 @@ function App() {
                         <Route path="profile" element={<Profile />} />
                         <Route path="settings" element={<Settings />} />
                     </Route>
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
