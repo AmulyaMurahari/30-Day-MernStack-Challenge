@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Login = () => {
@@ -6,14 +6,14 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try{
-            const response = await axios.post('/api/auth/login', { username, password});
+        try {
+            const response = await axios.post('/api/auth/login', { username, password });
             localStorage.setItem('token', response.data.token);
             setMessage('Login successful');
-        } catch(error) {
+        } catch (error) {
             setMessage('Error during login');
         }
     };
@@ -45,4 +45,4 @@ const Login = () => {
     );
 };
 
-export default Login
+export default Login;
