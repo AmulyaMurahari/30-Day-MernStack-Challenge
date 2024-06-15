@@ -190,6 +190,28 @@ React Router: React Router
 * Update the React frontend to handle user registration and login forms.
 * Test the user authentication and registration flows, ensuring successful login and access to protected routes.
 
+# Day 10
+
+### Goals:
+
+* Implement user profiles and account management.
+* Allow users to view and edit their profile information.
+* Implement password reset and change password functionality.
+
+### Resources/Tips:
+
+* MongoDB Update Operators
+* Express middleware for authentication
+
+### Daily Checklist
+
+* Create an API endpoint that allows users to view their profile information.
+* Implement an API endpoint that allows users to update their profile information.
+* Build a React component that displays the user's profile information and allows them to edit it.
+* Implement password reset functionality by sending a password reset link to the user's email.
+* Add a "Change Password" feature that allows users to update their password with a new one.
+
+
 
 
 
