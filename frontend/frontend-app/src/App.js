@@ -13,6 +13,7 @@ import Login from './Login';
 // import User from './User';
 import ResourceFormWithFormik from './ResourceFormWithFormik';
 import Profile from './Profile';
+import FileUpload from './FileUpload';
 
 const Home = () => <h1>Home Page</h1>;
 const About = () => <h1>About Page</h1>;
@@ -37,6 +38,7 @@ function App() {
                         <li><Link to="/profile">Profile</Link></li>
                         <li><Link to="/register">Register</Link></li>
                         <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/upload">Upload File</Link></li>
                     </ul>
                 </nav>
 
@@ -48,6 +50,7 @@ function App() {
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/upload" element={<FileUpload />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>

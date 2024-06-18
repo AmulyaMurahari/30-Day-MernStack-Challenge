@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const { protect } = require('../middleware/authMiddleware');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+const upload = require('../middleware/upload');
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' });
@@ -100,5 +101,21 @@ router.put('/profile', protect, async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
+//File upload endpoint
+router.post('/upload', upload.single('file'), (req,res) => {
+    try {
+        res.json({ filepath: `/uploads/${req.file.filename}`});
+    } catch(err)
+    {
+        res.status(500).json({ message: err.message});
+    }
+});
+
+router.get('/uploads/:filename', (req,res) => {
+    const filePath = path.join(__dirname, '../uploads', req.params.filename);
+    res.sendFile(filePath);
+});
+
 
 module.exports = router;
