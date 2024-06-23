@@ -208,6 +208,27 @@ React Router: React Router
 * Implement an API endpoint that allows users to update their profile information.
 * Build a React component that displays the user's profile information and allows them to edit it.
 
+# Day 11
+
+### Goals
+
+* Implement file uploads in the MERN stack.
+* Allow users to upload files (e.g., images) to the server.
+* Store the uploaded files and serve them when requested.
+  
+### Resources/Tips:
+
+* Multer
+
+### Daily Checklist
+
+* Set up multer to handle file uploads in your Express application.
+* Create an API endpoint that accepts file uploads and saves them to a designated directory.
+* Modify your React frontend to include a file upload form and send files to the backend API.
+* Implement an API endpoint that serves the uploaded files when requested.
+* Test the file upload functionality by uploading files from the frontend and verifying their availability on the server.
+
+
 
 
 
