@@ -14,6 +14,7 @@ import Login from './Login';
 import ResourceFormWithFormik from './ResourceFormWithFormik';
 import Profile from './Profile';
 import FileUpload from './FileUpload';
+import RealTimeUpdates from './RealTimeUpdates';
 
 const Home = () => <h1>Home Page</h1>;
 const About = () => <h1>About Page</h1>;
@@ -39,6 +40,7 @@ function App() {
                         <li><Link to="/register">Register</Link></li>
                         <li><Link to="/login">Login</Link></li>
                         <li><Link to="/upload">Upload File</Link></li>
+                        <li><Link to="/real-time-updates">Real-Time Updates</Link></li>
                     </ul>
                 </nav>
 
@@ -52,6 +54,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/upload" element={<FileUpload />} />
                     <Route path="*" element={<NotFound />} />
+                    <Route path="/real-time-updates" element={<RealTimeUpdates />} />
                 </Routes>
             </div>
         </Router>

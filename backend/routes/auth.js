@@ -10,6 +10,7 @@ const upload = require('../middleware/upload');
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 };
+console.log('Token: ', generateToken);
 
 // Register a new user
 router.post('/register', async (req, res) => {

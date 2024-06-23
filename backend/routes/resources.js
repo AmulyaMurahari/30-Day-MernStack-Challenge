@@ -29,6 +29,10 @@ router.post('/', async(req,res) => {
     try{
         const newResource = new Resource(req.body);
         await newResource.save();
+
+        //Emit an event to all connected clients(websocket)
+        req.app.get('socket.io').emit('newResource','New resource created');
+
         res.status(201).json(newResource);
     } catch (err)
     {

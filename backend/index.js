@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const http = require('http');
+const socketIo = require('socket.io');
 const cors = require('cors');
 const resourceRoutes = require('./routes/resources');
 const authRoutes = require('./routes/auth');
@@ -20,6 +22,29 @@ mongoose.connect(uri)
 app.use('/api/resources', protect, resourceRoutes);
 app.use('/api/auth', authRoutes);
 
+//Create the HTTTP server and wrap the Express app
+const server = http.createServer(app);
+
+
+//Initialize the web socket server instance
+const io = socketIo(server, {
+    cors: {
+        origin : "http://localhost:3000",
+        methods : ["GET", "POST"]
+    }
+});
+
+io.on('connection', (socket) => {
+    console.log("New client connected");
+    socket.on('disconnect', () => {
+        console.log("Client disconnected");
+    });
+});
+
+app.set('socket.io', io);
+
+
+
 app.get('/', (req,res) => {
     res.send('Hello, Amulya!');
 } )
@@ -28,7 +53,7 @@ app.get('/api/message', (req,res) => {
     res.json({ message: 'Hello from express !'});
 })
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
 
