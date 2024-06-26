@@ -228,6 +228,48 @@ React Router: React Router
 * Implement an API endpoint that serves the uploaded files when requested.
 * Test the file upload functionality by uploading files from the frontend and verifying their availability on the server.
 
+# Day 12 
+
+### Goals
+
+* Implement real-time features with WebSocket communication.
+* Set up a WebSocket server using libraries like Socket.IO.
+* Update React components to handle real-time updates.
+  
+### Resources/Tips
+
+* Socket.IO
+
+### Daily Checklist
+
+* Set up a WebSocket server using Socket.IO in your Express application.
+* Update a React component to establish a WebSocket connection and receive real-time updates from the server.
+* Emit WebSocket events from the server and handle them in the React component.
+* Implement a chat feature using WebSocket communication in your MERN stack application.
+* Test the real-time functionality by simulating multiple users and verifying that updates are received in real-time.
+
+
+# Day 13 
+
+### Goals
+
+* Implement data validation and sanitization to improve security.
+* Use libraries like Yup or Validator.js for validation.
+* Sanitize user input to prevent vulnerabilities like cross-site scripting (XSS).
+  
+### Resources/Tips
+
+* Yup
+* Validator.js
+
+### Daily Checklist
+
+* Use Yup or Validator.js to validate form inputs in your React application.
+* Implement server-side validation using Yup or a similar library to validate API request payloads.
+* Sanitize user input to prevent cross-site scripting (XSS) vulnerabilities.
+* Handle validation errors in your React components and display appropriate error messages.
+* Test the validation and sanitization functionality by submitting invalid data and ensuring it is rejected or sanitized correctly.
+
 
 
 
