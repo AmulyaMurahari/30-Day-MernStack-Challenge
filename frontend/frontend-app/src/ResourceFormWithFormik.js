@@ -12,7 +12,9 @@ const ResourceFormWithFormik = () => {
     };
 
     const validationSchema = Yup.object ({
-        name: Yup.string().required('Required'),
+        name: Yup.string()
+        .required('Required')
+        .matches(/^[a-zA-Z\s]*$/, 'Name should contain only letters'),
         description: Yup.string().required('Required'),
         email: Yup.string().email('Invalid email format').required('Required'),
     });

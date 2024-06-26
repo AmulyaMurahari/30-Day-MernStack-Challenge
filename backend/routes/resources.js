@@ -1,7 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const Resource = require('../models/Resource.js');
+const { check, validationResult } =  require('express-validator');
+const yup = require('yup');
 
+let resources = [
+    { id: 1, name: 'Resource 1' },
+    { id: 2, name: 'Resource 2' },
+  ];
+
+const validateResource = [
+    check('name')
+      .isString()
+      .withMessage('Name must be a string')
+      .matches(/^[a-zA-Z\s]*$/)
+      .withMessage('Name should contain only letters')
+      .notEmpty()
+      .withMessage('Name is required'),
+    check('description')
+      .isString()
+      .withMessage('Description must be a string')
+      .notEmpty()
+      .withMessage('Description is required'),
+    check('email')
+      .isEmail()
+      .withMessage('Invalid email format')
+      .notEmpty()
+      .withMessage('Email is required'),
+  ];
 
 //get paginated resource
 router.get('/', async(req,res) => {
@@ -25,20 +51,41 @@ router.get('/', async(req,res) => {
 })
 
 //Create a new resource
-router.post('/', async(req,res) => {
-    try{
-        const newResource = new Resource(req.body);
-        await newResource.save();
+// router.post('/', async(req,res) => {
+//     try{
 
-        //Emit an event to all connected clients(websocket)
-        req.app.get('socket.io').emit('newResource','New resource created');
+//         await resourceSchema.validate(req.body, { abortEarly: false});
 
-        res.status(201).json(newResource);
-    } catch (err)
-    {
-        res.status(400).json({ message: err.message});
+//         const newResource = new Resource(req.body);
+//         await newResource.save();
+
+//         //Emit an event to all connected clients(websocket)
+//         req.app.get('socket.io').emit('newResource','New resource created');
+
+//         res.status(201).json(newResource);
+//     } catch (err)
+//     {
+//         if(err.name === 'Validation Error') {
+//             return res.status(400).json({ errors: err.errors });
+//         }
+//         res.status(500).json({ message: err.message});
+//     }
+// });
+
+// POST endpoint to create a new resource
+router.post(
+    '/',
+    validateResource,
+    (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      const newResource = req.body;
+      resources.push(newResource);
+      res.status(201).json(newResource);
     }
-});
+  );
 
 //Retrieve a new resource
 router.get('/:id', async(req,res) => {
