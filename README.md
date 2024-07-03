@@ -271,6 +271,28 @@ React Router: React Router
 * Test the validation and sanitization functionality by submitting invalid data and ensuring it is rejected or sanitized correctly.
 
 
+# Day 14 
+
+### Goals
+
+* Implement role-based access control (RBAC) for different user roles.
+* Restrict access to certain routes or features based on user roles.
+* Manage user roles and permissions in the backend.
+
+### Resources/Tips
+
+* Access Control Lists (ACL)
+
+### Daily Checklist
+
+* Create different user roles in your MERN stack application (e.g., admin, user, guest).
+* Implement server-side logic to enforce RBAC by checking user roles and permissions.
+* Restrict access to certain routes or features based on user roles.
+* Build a React component that displays different content or features based on the user's role.
+* Test the role-based access control by logging in with different user accounts and verifying access to restricted routes or features.
+
+
+
 
 
 
