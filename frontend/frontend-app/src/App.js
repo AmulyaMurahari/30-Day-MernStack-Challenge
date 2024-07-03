@@ -15,6 +15,7 @@ import ResourceFormWithFormik from './ResourceFormWithFormik';
 import Profile from './Profile';
 import FileUpload from './FileUpload';
 import RealTimeUpdates from './RealTimeUpdates';
+import AdminPanel from './AdminPanel';
 
 const Home = () => <h1>Home Page</h1>;
 const About = () => <h1>About Page</h1>;
@@ -26,6 +27,7 @@ function App() {
     // const handleClick = () => {
     //     alert('Button clicked!');
     // };
+    const userRole = 'admin';
 
     return (
         <Router>
@@ -36,9 +38,11 @@ function App() {
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/resources">Resources</Link></li>
                         <li><Link to="/create-resource">Create Resource</Link></li>
+                        <li><Link to="/user">User</Link></li>
                         <li><Link to="/profile">Profile</Link></li>
                         <li><Link to="/register">Register</Link></li>
                         <li><Link to="/login">Login</Link></li>
+                        {userRole === 'admin' && <li><Link to="/admin">Admin Panel</Link></li>}
                         <li><Link to="/upload">Upload File</Link></li>
                         <li><Link to="/real-time-updates">Real-Time Updates</Link></li>
                     </ul>
@@ -52,6 +56,7 @@ function App() {
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/admin" element={userRole === 'admin' ? <AdminPanel /> : <NotFound />} />
                     <Route path="/upload" element={<FileUpload />} />
                     <Route path="*" element={<NotFound />} />
                     <Route path="/real-time-updates" element={<RealTimeUpdates />} />

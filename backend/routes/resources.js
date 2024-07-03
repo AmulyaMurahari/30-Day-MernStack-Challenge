@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Resource = require('../models/Resource.js');
 const { check, validationResult } =  require('express-validator');
+const { protect } = require('../middleware/authMiddleware');
+const { checkRole } = require('../middleware/roleMiddleware');
 const yup = require('yup');
 
 let resources = [
@@ -75,12 +77,22 @@ router.get('/', async(req,res) => {
 // POST endpoint to create a new resource
 router.post(
     '/',
-    validateResource,
+    protect,
+    // validateResource,
+    checkRole(['admin']),
+    [
+        //Validate input fields
+        check('name', 'Name is required').not().isEmpty(),
+        check('description','Description is required').not().isEmpty(),
+    ],
     (req, res) => {
+      //check for validation errors
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
+
+      //create a new Resource
       const newResource = req.body;
       resources.push(newResource);
       res.status(201).json(newResource);

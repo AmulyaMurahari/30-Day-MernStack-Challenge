@@ -6,6 +6,7 @@ const { protect } = require('../middleware/authMiddleware');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const upload = require('../middleware/upload');
+const { validationResult } = require('express-validator');
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' });
@@ -13,34 +14,64 @@ const generateToken = (id) => {
 console.log('Token: ', generateToken);
 
 // Register a new user
-router.post('/register', async (req, res) => {
-    const { username, password } = req.body;
-
-    try {
-        const userExists = await User.findOne({ username });
-
-        if (userExists) {
-            return res.status(400).json({ message: 'User already exists' });
+router.post(
+    '/register',
+    [
+        check('username', 'Username is required').not().isEmpty(),
+        check('password', 'Password is required').not().isEmpty(),
+        check('role', 'Role is required').not().isEmpty(), // Check for role
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
 
-        const user = await User.create({ username, password });
+        const { username, password, role } = req.body; // Include role
 
-        if (user) {
-            res.status(201).json({
-                _id: user._id,
-                username: user.username,
-                token: generateToken(user._id),
-            });
-        } else {
-            res.status(400).json({ message: 'Invalid user data' });
+        try {
+            const userExists = await User.findOne({ username });
+
+            if (userExists) {
+                return res.status(400).json({ message: 'User already exists' });
+            }
+
+            const user = new User({ username, password, role });
+            await user.save();
+
+            if (user) {
+                res.status(201).json({
+                    _id: user._id,
+                    username: user.username,
+                    role: user.role,
+                    token: generateToken(user._id),
+                });
+            } else {
+                res.status(400).json({ message: 'Invalid user data' });
+            }
+        } catch (err) {
+            res.status(500).json({ message: err.message });
         }
-    } catch (err) {
-        res.status(500).json({ message: err.message });
     }
-});
+);
+
 
 // Login a user
-router.post('/login', async (req, res) => {
+router.post(
+    
+    '/login', 
+    [
+        check('username', 'Username is required').not().isEmpty(),
+        check('password', 'Password is required').not().isEmpty(),
+    ],
+
+    async (req, res) => {
+    
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors: errors.array()});
+        }
+
     const { username, password } = req.body;
 
     try {
@@ -50,6 +81,7 @@ router.post('/login', async (req, res) => {
             res.json({
                 _id: user._id,
                 username: user.username,
+                role: user.role,
                 token: generateToken(user._id),
             });
         } else {
