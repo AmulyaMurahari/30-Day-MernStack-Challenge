@@ -16,6 +16,8 @@ import Profile from './Profile';
 import FileUpload from './FileUpload';
 import RealTimeUpdates from './RealTimeUpdates';
 import AdminPanel from './AdminPanel';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Home = () => <h1>Home Page</h1>;
 const About = () => <h1>About Page</h1>;
@@ -24,6 +26,7 @@ const ProfilePage = () => <Profile />;
 // const Settings = () => <h1>Settings Page</h1>;
 
 function App() {
+    const { t } = useTranslation();
     // const handleClick = () => {
     //     alert('Button clicked!');
     // };
@@ -32,6 +35,9 @@ function App() {
     return (
         <Router>
             <div className="App">
+            <LanguageSwitcher />
+                <h1>{t('welcome')}</h1>
+                <p>{t('description')}</p>
                 <nav>
                     <ul>
                     <li><Link to="/">Home</Link></li>
