@@ -291,6 +291,27 @@ React Router: React Router
 * Build a React component that displays different content or features based on the user's role.
 * Test the role-based access control by logging in with different user accounts and verifying access to restricted routes or features.
 
+# Day 15 
+
+### Goals
+
+* Implement internationalization (i18n) for multi-language support.
+* Set up language files and translations.
+* Update React components to display content in different languages.
+
+### Resources/Tips
+
+* react-i18next: https://react.i18next.com/
+
+### Daily Checklist
+
+* Set up language files (e.g., JSON or YAML) for different languages in your React application.
+* Implement a language switcher component that allows users to switch between languages.
+* Update React components to display content based on the selected language using i18n libraries like react-i18next.
+* Create translation files for commonly used phrases or labels in your application.
+* Test the multi-language support by switching between different languages and ensuring the content is displayed correctly.
+
+
 
 
 
