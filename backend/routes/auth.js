@@ -6,7 +6,7 @@ const { protect } = require('../middleware/authMiddleware');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const upload = require('../middleware/upload');
-const { validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' });

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Resource = require('../models/Resource.js');
+const cacheMiddleware = require('../middleware/cacheMiddleware');
 const { check, validationResult } =  require('express-validator');
 const { protect } = require('../middleware/authMiddleware');
 const { checkRole } = require('../middleware/roleMiddleware');
@@ -32,7 +33,7 @@ const validateResource = [
   ];
 
 //get paginated resource
-router.get('/', async(req,res) => {
+router.get('/', cacheMiddleware, async(req,res) => {
     const { page = 1, limit = 10, sortBy = 'name', order = 'asc'} = req.query;
 
     try{
@@ -118,6 +119,7 @@ router.put('/:id', async(req,res) => {
     try{
         const resource = await Resource.findByIdAndUpdate(req.params.id, req.body, { new:true, runValidators: true});
         if(resource) {
+            redisClient.del('/api/resources');
             res.json(resource);
         } else {
             res.status(400).json({message:'Resource not found'});
